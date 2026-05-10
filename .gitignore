@@ -1,0 +1,13 @@
+.claude
+.venv
+__pycache__
+bin/
+build/
+dist/
+*.spec
+
+// Dev Settings.
+ItemData_Dev.json
+
+// Release Dir.
+release/

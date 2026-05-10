@@ -1,0 +1,112 @@
+{
+  "Categories": [
+    {
+      "Name": "Houdini",
+      "IconColor": "#ff6108",
+      "IconPath": "",
+      "Items": [
+        {
+          "Name": "Houdini 21.0.512",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Houdini 21.0.512",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Houdini 21.0.512"
+        },
+        {
+          "Name": "Houdini 21.0.440",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Houdini 21.0.440",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Houdini 21.0.440"
+        },
+        {
+          "Name": "Houdini 20.5.684",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Houdini 20.5.684",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Houdini 20.5.684"
+        }
+      ]
+    },
+    {
+      "Name": "Maya",
+      "IconColor": "#14adc7",
+      "IconPath": "",
+      "Items": [
+        {
+          "Name": "Maya 2027",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Maya 2027",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Maya 2027"
+        },
+        {
+          "Name": "Maya 2026",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Maya 2026",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Maya 2026"
+        },
+        {
+          "Name": "Maya 2025",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Maya 2025",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Maya 2025"
+        }
+      ]
+    },
+    {
+      "Name": "Unreal",
+      "IconColor": "#d1d6e0",
+      "IconPath": "",
+      "Items": [
+        {
+          "Name": "Unreal Engine 5.7.3",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Unreal Engine 5.7.3",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Unreal 5.7.3"
+        },
+        {
+          "Name": "Unreal Engine 5.6.3",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Unreal Engine 5.6.3",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Unreal 5.6.3"
+        },
+        {
+          "Name": "Unreal Engine 5.5.4",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Launch Unreal Engine 5.5.4",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "Launch Unreal 5.5.4"
+        }
+      ]
+    },
+    {
+      "Name": "Utilities",
+      "IconColor": "#6b7280",
+      "IconPath": "",
+      "Items": [
+        {
+          "Name": "Hello World",
+          "IconColor": "",
+          "IconPath": "",
+          "Description": "Hello World",
+          "ScriptPath": "{APP_ROOT_DIR}/data/win/scripts/sample.bat",
+          "Args": "\"Hello, World!!\""
+        }
+      ]
+    }
+  ]
+}
