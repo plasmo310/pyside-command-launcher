@@ -83,7 +83,7 @@ The `LaunchApp_Dev` script loads `ItemData_Dev.json` instead — intended for de
 
 **1. Select a category in the left sidebar, then select a command from the center panel.**
 
-- The right panel displays the script path, arguments, and a content preview.
+- You can also multi-select using Shift or Ctrl.</br>When selected, the right panel displays detailed script information.
 
   <img src="doc/ReadMeContents/02_manual_select.png" width="400">
 
@@ -144,23 +144,23 @@ It is loaded at startup and defines the categories and commands displayed in the
 
 **Categories**
 
-| Field       | Required | Description                               |
-| ----------- | -------- | ----------------------------------------- |
-| `Name`      | ✓        | Category name shown in the left sidebar   |
-| `IconColor` | ✓        | Icon color (hex color code)               |
-| `IconPath`  | ✓        | Path to the icon image                    |
-| `Items`     |          | Array of command entries (default: empty) |
+| Field       | Description                 |
+| ----------- | --------------------------- |
+| `Name`      | Category name               |
+| `IconColor` | Icon color (hex color code) |
+| `IconPath`  | Path to the icon image      |
+| `Items`     | Array of command entries    |
 
 **Items**
 
-| Field         | Required | Description                      |
-| ------------- | -------- | -------------------------------- |
-| `Name`        | ✓        | Command name shown in the list   |
-| `Description` | ✓        | Description text for the command |
-| `ScriptPath`  | ✓        | Path to the script to execute    |
-| `Args`        |          | Arguments passed to the script   |
-| `IconColor`   |          | Icon color (hex color code)      |
-| `IconPath`    |          | Path to the icon image           |
+| Field         | Description                      |
+| ------------- | -------------------------------- |
+| `Name`        | Command name                     |
+| `Description` | Description text for the command |
+| `ScriptPath`  | Path to the script to execute    |
+| `Args`        | Arguments passed to the script   |
+| `IconColor`   | Icon color (hex color code)      |
+| `IconPath`    | Path to the icon image           |
 
 ### Path Placeholders
 
@@ -214,7 +214,7 @@ python/cmdlaunch/
 ├── logger.py               # Logger configuration
 ├── data/
 │   ├── item_info.py        # CategoryItemInfo / CommandItemInfo dataclasses
-│   └── interface.py        # JSON serialization interface
+│   └── interface.py        # Interface for data classes
 └── gui/
     ├── main_model.py        # Data layer: JSON loading and command execution
     ├── main_view.py         # MainView (QMainWindow): 3-panel layout

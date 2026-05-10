@@ -1,7 +1,7 @@
 # Command Launcher
 
 バッチファイル・シェルスクリプトなどを登録して実行できる汎用ランチャーツールです。  
-カテゴリ分けと引数設定が行えるため、DCCツールの複数環境の切り替えなどに活用できます。
+カテゴリ分けや引数設定が行えるため、DCCツールの複数環境の切り替え処理などに活用できます。
 
 <img src="doc/ReadMeContents/01_command_launcher.png" width="800">
 
@@ -81,7 +81,7 @@ python -m cmdlaunch.main --json-path path/to/ItemData.json
 
 **1. 左サイドバーでカテゴリを選択し、中央パネルからコマンドを選択します。**
 
-- 右パネルにスクリプトのパス・引数・内容プレビューが表示されます。
+- Shift、Ctrlキーで複数選択も可能です。</br>選択すると、右パネルにスクリプト情報の詳細が表示されます。
 
   <img src="doc/ReadMeContents/02_manual_select.png" width="400">
 
@@ -142,23 +142,23 @@ python -m cmdlaunch.main --json-path path/to/ItemData.json
 
 **Categories（カテゴリ設定）**
 
-| フィールド  | 必須 | 説明                               |
-| ----------- | ---- | ---------------------------------- |
-| `Name`      | ✓    | 左サイドバーに表示されるカテゴリ名 |
-| `IconColor` | ✓    | アイコンの色（16進数カラーコード） |
-| `IconPath`  | ✓    | アイコン画像のパス                 |
-| `Items`     |      | コマンド設定の配列（省略時は空）   |
+| フィールド  | 説明                               |
+| ----------- | ---------------------------------- |
+| `Name`      | カテゴリ名                         |
+| `IconColor` | アイコンの色（16進数カラーコード） |
+| `IconPath`  | アイコン画像のパス                 |
+| `Items`     | コマンド設定の配列                 |
 
 **Items（コマンド設定）**
 
-| フィールド    | 必須 | 説明                               |
-| ------------- | ---- | ---------------------------------- |
-| `Name`        | ✓    | コマンド一覧に表示される名前       |
-| `Description` | ✓    | コマンドの説明文                   |
-| `ScriptPath`  | ✓    | 実行するスクリプトのパス           |
-| `Args`        |      | スクリプトに渡す引数               |
-| `IconColor`   |      | アイコンの色（16進数カラーコード） |
-| `IconPath`    |      | アイコン画像のパス                 |
+| フィールド    | 説明                               |
+| ------------- | ---------------------------------- |
+| `Name`        | コマンド名                         |
+| `Description` | コマンドの説明文                   |
+| `ScriptPath`  | 実行するスクリプトのパス           |
+| `Args`        | スクリプトに渡す引数               |
+| `IconColor`   | アイコンの色（16進数カラーコード） |
+| `IconPath`    | アイコン画像のパス                 |
 
 ### パスのプレースホルダー
 
@@ -207,21 +207,21 @@ Widget は Model を直接参照せず、Qt シグナルを通じてイベント
 ```
 python/cmdlaunch/
 ├── main.py                 # QApplication の初期化・エントリーポイント
-├── tool_config.py          # アプリ設定・リソースパスの定数
-├── definitions.py          # CommandType / PlatformType の列挙型
+├── tool_config.py          # アプリ設定
+├── definitions.py          # CommandType / PlatformType などの列挙型
 ├── logger.py               # ロガー設定
 ├── data/
 │   ├── item_info.py        # CategoryItemInfo / CommandItemInfo データクラス
-│   └── interface.py        # JSON シリアライズ用インターフェース
+│   └── interface.py        # データクラス用インターフェース
 └── gui/
-    ├── main_model.py        # データ層: JSON 読み込み・コマンド実行
-    ├── main_view.py         # MainView (QMainWindow): 3ペイン構成
-    ├── main_controller.py   # Model と View を Qt シグナル/スロットで接続
+    ├── main_model.py        # Model層: JSON 読み込み・コマンド実行など
+    ├── main_view.py         # View層: 3ペイン構成で各widgetsを組み合わせて構成
+    ├── main_controller.py   # Controller層: Model、Viewの受け渡し
     └── widgets/
         ├── category_panel.py  # 左サイドバー: カテゴリ一覧
-        ├── category_item.py   # カテゴリサイドバーの1行
+        ├── category_item.py   # カテゴリアイテム
         ├── menu_panel.py      # 中央パネル: コマンド一覧
-        ├── menu_item.py       # コマンド一覧の1行（実行・表示ボタン）
+        ├── menu_item.py       # コマンドアイテム
         ├── detail_panel.py    # 右パネル: スクリプトプレビュー
-        └── icon_button.py     # 42×42 のアイコンボタン（通常・危険の2バリアント）
+        └── icon_button.py     # アイコンボタン
 ```
