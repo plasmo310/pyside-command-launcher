@@ -13,7 +13,7 @@ if not exist %PYTHON_EXE% (
 set PYTHONDONTWRITEBYTECODE=1
 set PYTHONPATH=%ROOT_DIR%\python
 
-set PARAM_JSON_PATH=%ROOT_DIR%\data\win\ItemData_User.json
+set PARAM_JSON_PATH=%ROOT_DIR%\data\win\ItemData_Dev.json
 if not exist "%PARAM_JSON_PATH%" (
     echo Not found json file. Please create a json file at the following path.
     echo %PARAM_JSON_PATH%
