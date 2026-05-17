@@ -54,7 +54,7 @@ class MainController:
         self.__view.on_click_open_settings_signal.connect(
             self.__on_click_open_settings_button
         )
-        self.__view.on_click_update_signal.connect(self.__on_click_update_button)
+        self.__view.on_click_reflesh_signal.connect(self.__on_click_reflesh_button)
 
     def __on_select_category_item(self, category_item_info: CategoryItemInfo):
         """カテゴリアイテム選択処理"""
@@ -98,6 +98,8 @@ class MainController:
         """Open Settingsボタン押下時処理"""
         self.__model.reveal_in_file_manager(self.__json_path)
 
-    def __on_click_update_button(self):
-        """Updateボタン押下時処理"""
-        print("Update")
+    def __on_click_reflesh_button(self):
+        """Refleshボタン押下時処理"""
+        self.__model.reload()
+        self.__view.detail_panel.show_item(None, "")
+        self.__init_data()

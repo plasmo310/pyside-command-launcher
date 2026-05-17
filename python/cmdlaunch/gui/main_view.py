@@ -12,7 +12,7 @@ class MainView(QtWidgets.QMainWindow):
     """メイン画面 Viewクラス"""
 
     on_click_open_settings_signal = Signal()
-    on_click_update_signal = Signal()
+    on_click_reflesh_signal = Signal()
 
     def __init__(self):
         super().__init__()
@@ -75,12 +75,12 @@ class MainView(QtWidgets.QMainWindow):
         layout.addWidget(open_settings_button)
         layout.addSpacing(8)
 
-        update_button = QtWidgets.QPushButton("Update")
-        update_button.setFixedHeight(36)
-        update_button.setProperty("class", "ButtonSmall")
-        update_button.setStyleSheet("padding: 0 11px;")
-        update_button.clicked.connect(self.on_click_update_signal)
-        layout.addWidget(update_button)
+        reflesh_button = QtWidgets.QPushButton("Reflesh")
+        reflesh_button.setFixedHeight(36)
+        reflesh_button.setProperty("class", "ButtonSmall")
+        reflesh_button.setStyleSheet("padding: 0 11px;")
+        reflesh_button.clicked.connect(self.on_click_reflesh_signal)
+        layout.addWidget(reflesh_button)
 
         return header_bar
 

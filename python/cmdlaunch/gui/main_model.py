@@ -24,9 +24,14 @@ class MainModel:
     """
 
     def __init__(self, json_path: str):
+        self.__json_path = json_path
         self.__category_item_info_list: List[CategoryItemInfo] = self.__load_from_json(
             json_path
         )
+
+    def reload(self) -> None:
+        """設定ファイルを再読み込みする"""
+        self.__category_item_info_list = self.__load_from_json(self.__json_path)
 
     @staticmethod
     def __load_from_json(json_path: str) -> List[CategoryItemInfo]:
