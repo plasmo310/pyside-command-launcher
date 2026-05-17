@@ -202,7 +202,9 @@ class DetailPanel(QtWidgets.QFrame):
         self.path_edit.setText(command_item_info.script_path)
         self.args_edit.setText(command_item_info.args)
         if script_content is None:
-            self.code_editor.setPlainText("# This file type is not supported for preview.")
+            self.code_editor.setPlainText(
+                "# This file type is not supported for preview."
+            )
         elif script_content:
             self.code_editor.setPlainText(script_content)
         else:

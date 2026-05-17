@@ -1,4 +1,5 @@
 from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import Signal
 
 from cmdlaunch.tool_config import ToolConfig
 
@@ -9,6 +10,9 @@ from .widgets.menu_panel import MenuPanel
 
 class MainView(QtWidgets.QMainWindow):
     """メイン画面 Viewクラス"""
+
+    on_click_open_settings_signal = Signal()
+    on_click_update_signal = Signal()
 
     def __init__(self):
         super().__init__()
@@ -62,6 +66,21 @@ class MainView(QtWidgets.QMainWindow):
         window_title_label.setProperty("class", "WindowTitle")
         layout.addWidget(window_title_label)
         layout.addStretch()
+
+        open_settings_button = QtWidgets.QPushButton("Open Settings")
+        open_settings_button.setFixedHeight(36)
+        open_settings_button.setProperty("class", "ButtonSmall")
+        open_settings_button.setStyleSheet("padding: 0 11px;")
+        open_settings_button.clicked.connect(self.on_click_open_settings_signal)
+        layout.addWidget(open_settings_button)
+        layout.addSpacing(8)
+
+        update_button = QtWidgets.QPushButton("Update")
+        update_button.setFixedHeight(36)
+        update_button.setProperty("class", "ButtonSmall")
+        update_button.setStyleSheet("padding: 0 11px;")
+        update_button.clicked.connect(self.on_click_update_signal)
+        layout.addWidget(update_button)
 
         return header_bar
 

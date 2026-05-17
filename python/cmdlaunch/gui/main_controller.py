@@ -10,6 +10,7 @@ class MainController:
     """メイン画面 Controllerクラス"""
 
     def __init__(self, json_path: str):
+        self.__json_path = json_path
         self.__model = MainModel(json_path=json_path)
         self.__view = MainView()
         self.__setup_connections()
@@ -50,6 +51,10 @@ class MainController:
         self.__view.detail_panel.on_click_open_signal.connect(
             self.__on_click_open_button
         )
+        self.__view.on_click_open_settings_signal.connect(
+            self.__on_click_open_settings_button
+        )
+        self.__view.on_click_update_signal.connect(self.__on_click_update_button)
 
     def __on_select_category_item(self, category_item_info: CategoryItemInfo):
         """カテゴリアイテム選択処理"""
@@ -88,3 +93,11 @@ class MainController:
             script_path (str): スクリプトパス
         """
         self.__model.reveal_in_file_manager(script_path)
+
+    def __on_click_open_settings_button(self):
+        """Open Settingsボタン押下時処理"""
+        self.__model.reveal_in_file_manager(self.__json_path)
+
+    def __on_click_update_button(self):
+        """Updateボタン押下時処理"""
+        print("Update")
