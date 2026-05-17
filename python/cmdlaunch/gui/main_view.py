@@ -13,6 +13,7 @@ class MainView(QtWidgets.QMainWindow):
 
     on_click_open_settings_signal = Signal()
     on_click_reflesh_signal = Signal()
+    on_click_toggle_detail_signal = Signal()
 
     def __init__(self):
         super().__init__()
@@ -81,6 +82,16 @@ class MainView(QtWidgets.QMainWindow):
         reflesh_button.setStyleSheet("padding: 0 11px;")
         reflesh_button.clicked.connect(self.on_click_reflesh_signal)
         layout.addWidget(reflesh_button)
+        layout.addSpacing(8)
+
+        self.__toggle_detail_button = QtWidgets.QPushButton("◧")
+        self.__toggle_detail_button.setFixedHeight(36)
+        self.__toggle_detail_button.setProperty("class", "ButtonSmall")
+        self.__toggle_detail_button.setStyleSheet(
+            "padding: 0 11px 4px 11px; font-size: 16px;"
+        )
+        self.__toggle_detail_button.clicked.connect(self.on_click_toggle_detail_signal)
+        layout.addWidget(self.__toggle_detail_button)
 
         return header_bar
 
@@ -93,21 +104,38 @@ class MainView(QtWidgets.QMainWindow):
         outer_layout.setSpacing(0)
         outer_layout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetNoConstraint)
 
-        splitter = QtWidgets.QSplitter(QtCore.Qt.Orientation.Horizontal)
-        splitter.setProperty("class", "MainSplitter")
-        splitter.setChildrenCollapsible(False)
-        splitter.setHandleWidth(8)
-        splitter.setMinimumHeight(0)
+        self.__splitter = QtWidgets.QSplitter(QtCore.Qt.Orientation.Horizontal)
+        self.__splitter.setProperty("class", "MainSplitter")
+        self.__splitter.setChildrenCollapsible(True)
+        self.__splitter.setHandleWidth(8)
+        self.__splitter.setMinimumHeight(0)
 
         self.category_panel = CategoryPanel()
         self.menu_panel = MenuPanel()
         self.detail_panel = DetailPanel()
 
-        splitter.addWidget(self.category_panel)
-        splitter.addWidget(self.menu_panel)
-        splitter.addWidget(self.detail_panel)
-        splitter.setSizes([280, 400, 536])
+        self.__splitter.addWidget(self.category_panel)
+        self.__splitter.addWidget(self.menu_panel)
+        self.__splitter.addWidget(self.detail_panel)
+        self.__splitter.setSizes([280, 400, 536])
 
-        outer_layout.addWidget(splitter)
+        self.__detail_panel_saved_width = 536
+
+        outer_layout.addWidget(self.__splitter)
 
         return content_area
+
+    def toggle_detail_panel(self):
+        """DetailPanelの開閉"""
+        sizes = self.__splitter.sizes()
+        detail_width = sizes[2]
+        if detail_width > 0:
+            self.__detail_panel_saved_width = detail_width
+            self.resize(self.width() - detail_width, self.height())
+            self.__splitter.setSizes([sizes[0], sizes[1], 0])
+            self.__toggle_detail_button.setText("◨")
+        else:
+            restored = self.__detail_panel_saved_width
+            self.resize(self.width() + restored, self.height())
+            self.__splitter.setSizes([sizes[0], sizes[1], restored])
+            self.__toggle_detail_button.setText("◧")

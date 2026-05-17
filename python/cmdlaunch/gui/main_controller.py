@@ -55,6 +55,9 @@ class MainController:
             self.__on_click_open_settings_button
         )
         self.__view.on_click_reflesh_signal.connect(self.__on_click_reflesh_button)
+        self.__view.on_click_toggle_detail_signal.connect(
+            self.__on_click_toggle_detail_button
+        )
 
     def __on_select_category_item(self, category_item_info: CategoryItemInfo):
         """カテゴリアイテム選択処理"""
@@ -103,3 +106,7 @@ class MainController:
         self.__model.reload()
         self.__view.detail_panel.show_item(None, "")
         self.__init_data()
+
+    def __on_click_toggle_detail_button(self):
+        """Detail開閉ボタン押下時処理"""
+        self.__view.toggle_detail_panel()
